@@ -22,6 +22,14 @@ app.post('/todos', (req, res) => {
 	});
 });
 
+app.get('/todos', (req, res) => {
+	Todo.find().then((allTodos) => {
+		res.send({allTodos});
+	}, (err) => {
+		res.status(400).send(err);
+	});
+});
+
 app.listen(port, () => {
 	console.log(`Server is up on port ${port}`);
 });
